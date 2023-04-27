@@ -7,14 +7,17 @@ if (check == Is_present) {
 else {
     console.log("Employee is Absent");
 }
-//UC4
+//UC5
 let Wage_Per_Hr = 20, Full_Day_Hr = 8, Part_Day_Hr = 4,Is_Full_Time=1,Is_Part_Time=2;
 const Num_of_Workingdays =20;
+const Max_Hrs_InMonth=100;
+let totalworkingdays=0;
 let empHrs = 0;
-for(let day =0;day<Num_of_Workingdays;day++)
+while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
 {
-    let check1 =  Math.floor(Math.random()*10) % 3;
-    empHrs = GetWorkingHrs(check1);
+    totalworkingdays++;
+    let check1 =Math.floor(Math.random()*10)%3;
+    empHrs +=GetWorkingHrs(check1);
 }
 
 let Wage = empHrs*Wage_Per_Hr;
