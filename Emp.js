@@ -61,3 +61,14 @@ function totalWages(totalwage,dailywage)
     return totalwage+dailywage;
 }
 console.log("Emp Wage with reduce "+empDailywage.reduce(totalWages,0));
+
+//UC7B
+let dailyCntr =0;
+function mapDaywithWage(dailywage)
+{
+    dailyCntr++;
+    return dailyCntr + " = "+dailywage;
+}
+let mapDaywithWageArr = empDailywage.map(mapDaywithWage);
+console.log("Daily Wage Map");
+console.log(mapDaywithWageArr);
