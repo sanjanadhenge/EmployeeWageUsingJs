@@ -89,3 +89,10 @@ function FindFulltimeWage(dailywage)
 }
 console.log("Daily wage filter when Fulltime wage Earned");
 console.log(mapDaywithWageArr.find(FindFulltimeWage));
+
+//UC7E
+function isAllFulltimeWage(dailywage)
+{
+    return dailywage.includes("160");
+}
+console.log("Check all Element have Full Time Wage: "+fullDayWageArr.every(isAllFulltimeWage));
