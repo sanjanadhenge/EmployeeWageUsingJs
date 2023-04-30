@@ -102,4 +102,13 @@ function isAllParttimeWage(dailywage)
 {
     return dailywage.includes("80");
 }
-console.log("Check all Element have Full Time Wage: "+fullDayWageArr.some(isAllParttimeWage));
+console.log("Check all Element have part Time Wage: "+mapDaywithWageArr.some(isAllParttimeWage));
+
+
+//UC7G
+function TotalDaysWorked(dailywage)
+{
+    if(dailywage>0) return numofDays+1;
+    return numofDays; 
+}
+console.log("Number of Days empWorked: "+empDailywage.reduce(TotalDaysWorked,0));
