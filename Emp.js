@@ -7,20 +7,26 @@ if (check == Is_present) {
 else {
     console.log("Employee is Absent");
 }
-//UC5
+//UC6
 let Wage_Per_Hr = 20, Full_Day_Hr = 8, Part_Day_Hr = 4,Is_Full_Time=1,Is_Part_Time=2;
 const Num_of_Workingdays =20;
 const Max_Hrs_InMonth=100;
 let totalworkingdays=0;
+let empDailywage = new Array();
 let empHrs = 0;
+let totalempHrs=0;
+
 while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
 {
     totalworkingdays++;
     let check1 =Math.floor(Math.random()*10)%3;
     empHrs +=GetWorkingHrs(check1);
+    totalempHrs += empHrs;
+    empDailywage.push(CalculateWage(empHrs));
+
 }
 
-let Wage = empHrs*Wage_Per_Hr;
+let Wage = CalculateWage(totalempHrs);
 console.log("Emp Wage "+Wage);
 function GetWorkingHrs(check1)
 {
@@ -36,3 +42,9 @@ function GetWorkingHrs(check1)
             return 0;
     }
 }
+function CalculateWage(empHrs)
+{
+ return empHrs*Wage_Per_Hr;
+}
+
+console.log("Total days:"+totalworkingdays+"Total Hrs "+totalempHrs+" Emp wage"+empDailywage);
