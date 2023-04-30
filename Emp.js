@@ -112,3 +112,6 @@ function TotalDaysWorked(dailywage)
     return numofDays; 
 }
 console.log("Number of Days empWorked: "+empDailywage.reduce(TotalDaysWorked,0));
+
+//UC8
+console.log("Emp wage Map to totalhours :"+Array.from(empDailywage.values()).reduce(totalWages,0));
