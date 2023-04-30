@@ -33,9 +33,9 @@ while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
             dayNum:totalworkingdays,
             dailyhrs:empHrs,
             dailywage:CalculateWage(empHrs),
-            toString(){
-                return '\nDay '+this.dayNum+'  ----> working Hrs is '+this.dailyhrs+'  And Wage is --->'+this.dailywage
-            },
+           toString(){
+              return '\nDay '+this.dayNum+'  ----> working Hrs is '+this.dailyhrs+'  And Wage is --->'+this.dailywage
+           },
         }
     );
 
@@ -88,7 +88,7 @@ let mapDaywithWageArr = empDailywage.map(mapDaywithWage);
 console.log("Daily Wage Map");
 console.log(mapDaywithWageArr);
 
-//UC7D
+//UC7C
 function FullTimeWage(dailywage)
 {
     return dailywage.includes("160")
@@ -165,3 +165,34 @@ console.log("Fulltime working days:"+nonWorkingDays);
 
 //UC10
 console.log("Daily hours worked and wage --->"+ empDailywageandHrsArr);
+
+//UC11
+//UC11A
+let totalwages = empDailywageandHrsArr.filter(dailywageandhrs=>dailywageandhrs.dailywage>0).reduce((totalWage,dailywageandhrs)=>totalWage += dailywageandhrs.dailywage,0);
+let totalhrs = empDailywageandHrsArr.filter(dailywageandhrs=>dailywageandhrs.dailywage>0).reduce((totalhr,dailywageandhrs)=>totalhr += dailywageandhrs.dailywage,0);
+console.log("Total Wage is ---->"+totalwages+" Total Hrs ----->"+totalhrs);
+//UC11B
+let d=0;
+function mapDaywithWage1(dailywage)
+{
+    d++;
+    return dailyCntr + " = "+dailywage;
+}
+let mapDaywage = empDailywageandHrsArr.map(mapDaywithWage1);
+console.log("Daily Wage Map");
+console.log(mapDaywage);
+
+//UC11C
+empDailywageandHrsArr.filter(dailywageandhrs=>dailywageandhrs.dailyhrs==8).forEach(dailywageandhrs=>console.log(dailywageandhrs.toString()));
+//UC11D
+empDailywageandHrsArr.find(dailywageandhrs=>dailywageandhrs.dailyhrs==8).forEach(dailywageandhrs=>console.log(dailywageandhrs.toString()));
+//UC11D
+//UC11E
+let flag1=empDailywageandHrsArr.every(dailywageandhrs=>dailywageandhrs.dailywage==160);
+console.log(flag1);
+//UC11F
+let flag2=empDailywageandHrsArr.some(dailywageandhrs=>dailywageandhrs.dailywage==80);
+console.log(flag2);
+//UC11G
+let totalworkedday = empDailywageandHrsArr.filter(dailywageandhrs=>dailywageandhrs.dailywage>0).reduce((numday,dailywageandhrs)=>numday += dailywageandhrs.dailywage,0);
+console.log(totalworkedday);
