@@ -15,6 +15,7 @@ let totalworkingdays=0;
 let empDailywage = new Array();
 let empHrs = 0;
 let totalempHrs=0;
+let empMap = new Map();
 
 while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
 {
@@ -23,6 +24,7 @@ while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
     empHrs +=GetWorkingHrs(check1);
     totalempHrs += empHrs;
     empDailywage.push(CalculateWage(empHrs));
+    empMap.set(totalworkingdays,CalculateWage(empHrs));
 
 }
 
@@ -106,6 +108,7 @@ console.log("Check all Element have part Time Wage: "+mapDaywithWageArr.some(isA
 
 
 //UC7G
+numofDays=0;
 function TotalDaysWorked(dailywage)
 {
     if(dailywage>0) return numofDays+1;
@@ -114,4 +117,5 @@ function TotalDaysWorked(dailywage)
 console.log("Number of Days empWorked: "+empDailywage.reduce(TotalDaysWorked,0));
 
 //UC8
-console.log("Emp wage Map to totalhours :"+Array.from(empDailywage.values()).reduce(totalWages,0));
+console.log(empMap);
+console.log("Emp wage Map to totalhours :"+Array.from(empMap.values()).reduce(totalWages,0));
