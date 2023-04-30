@@ -16,6 +16,7 @@ let empDailywage = new Array();
 let empHrs = 0;
 let totalempHrs=0;
 let empMap = new Map();
+let empMapHrs = new Map();
 
 while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
 {
@@ -24,6 +25,7 @@ while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
     empHrs +=GetWorkingHrs(check1);
     totalempHrs += empHrs;
     empDailywage.push(CalculateWage(empHrs));
+    empMapHrs.set(totalworkingdays,empHrs);
     empMap.set(totalworkingdays,CalculateWage(empHrs));
 
 }
@@ -118,3 +120,34 @@ console.log("Number of Days empWorked: "+empDailywage.reduce(TotalDaysWorked,0))
 //UC8
 console.log(empMap);
 console.log("Emp wage Map to totalhours :"+Array.from(empMap.values()).reduce(totalWages,0));
+
+//UC9
+//UC9A
+const findTotal=(totalval,dailyval)=>{
+    return totalval+dailyval;
+}
+let totalhours = Array.from(empMapHrs.values()).reduce(findTotal,0);
+let totalSalary=empDailywage.filter(dailywage=>dailywage>0).reduce(findTotal,0);
+console.log("Emp wage with Arrow ---->"+"Total Hours ="+ totalhours+"  Total Wages ="+totalSalary);
+//UC9B
+let nonWorkingDays= new Array();
+let partWorkingDays= new Array();
+let fullWorkingDays= new Array();
+empMapHrs.forEach((value,key,map )=> {
+    if(value == 8)
+    {
+        fullWorkingDays.push(key);
+    }
+   else if(value == 4)
+    {
+        partWorkingDays.push(key);
+    }
+    else
+    {
+        nonWorkingDays.push(key);
+    }
+    
+})
+console.log("Full working days:"+fullWorkingDays);
+console.log("Parttime working days:"+partWorkingDays);
+console.log("Fulltime working days:"+nonWorkingDays);
