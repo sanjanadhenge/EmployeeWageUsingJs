@@ -108,8 +108,7 @@ console.log("Check all Element have part Time Wage: "+mapDaywithWageArr.some(isA
 
 
 //UC7G
-numofDays=0;
-function TotalDaysWorked(dailywage)
+function TotalDaysWorked(numofDays,dailywage)
 {
     if(dailywage>0) return numofDays+1;
     return numofDays; 
