@@ -17,6 +17,7 @@ let empHrs = 0;
 let totalempHrs=0;
 let empMap = new Map();
 let empMapHrs = new Map();
+let empDailywageandHrsArr = new Array();
 
 while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
 {
@@ -27,6 +28,16 @@ while(empHrs<= Max_Hrs_InMonth && empHrs <Num_of_Workingdays)
     empDailywage.push(CalculateWage(empHrs));
     empMapHrs.set(totalworkingdays,empHrs);
     empMap.set(totalworkingdays,CalculateWage(empHrs));
+    empDailywageandHrsArr.push(
+        {
+            dayNum:totalworkingdays,
+            dailyhrs:empHrs,
+            dailywage:CalculateWage(empHrs),
+            toString(){
+                return '\nDay '+this.dayNum+'  ----> working Hrs is '+this.dailyhrs+'  And Wage is --->'+this.dailywage
+            },
+        }
+    );
 
 }
 
@@ -151,3 +162,6 @@ empMapHrs.forEach((value,key,map )=> {
 console.log("Full working days:"+fullWorkingDays);
 console.log("Parttime working days:"+partWorkingDays);
 console.log("Fulltime working days:"+nonWorkingDays);
+
+//UC10
+console.log("Daily hours worked and wage --->"+ empDailywageandHrsArr);
